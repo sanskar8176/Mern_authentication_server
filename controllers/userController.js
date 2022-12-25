@@ -92,7 +92,9 @@ class UserController {
       if (user) {
         const secret = user._id + process.env.JWT_SECRET_KEY
         const token = jwt.sign({ userID: user._id }, secret, { expiresIn: '15m' })
-        const link = `http://127.0.0.1:3000/api/user/reset/${user._id}/${token}`
+      
+        // ye link client side ki rhegi 
+        const link = `https://auth-app-rj8b.onrender.com/api/user/reset/${user._id}/${token}`
         // console.log(link)
        
         // Send Email
