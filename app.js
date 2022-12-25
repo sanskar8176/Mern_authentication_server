@@ -6,20 +6,20 @@ import connectDB from './config/connectdb.js'
 import userRoutes from './routes/userRoutes.js'
 
 const app = express()
-const port = process.env.PORT
-const DATABASE_URL = process.env.DATABASE_URL
-
+const port = process.env.PORT || 4000
+const username = process.env.DB_USERNAME;
+const password = process.env.DB_PASSWORD;
 // CORS Policy
 app.use(cors())
 
 // Database Connection
-connectDB(DATABASE_URL)
+connectDB(username,password);
 
 // JSON
-app.use(express.json())
+app.use(express.json());
 
 // Load Routes
-app.use("/api/user", userRoutes)
+app.use("/api/user", userRoutes);
 
 app.listen(port, () => {
   console.log(`Server listening at ${port}`)
